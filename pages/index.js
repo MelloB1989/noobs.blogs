@@ -1,56 +1,13 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import Layout from '../layout/default_layout'
-//import { getAllPostIds, getPostData } from '../lib/blogs';
-
 
 const CDN = "https://d99gnvg3g7wwg.cloudfront.net/noobs_main/";
-export default function Home() {
-  
-  
-  
-  const sample_blogs = [
-    {
-      'id' : 1,
-      'image_url' : 'images/blog/post-4.jpg',
-      'title' : 'Elements That You Can Use To Create A New Post On This Template.',
-      'des' : 'Heading example Here is example of hedings. You can use this heading by following …',
-      'date' : '5 Mar, 2020'
-    },
-    {
-      'id' : 2,
-      'image_url' : 'images/blog/post-3.jpg',
-      'title' : 'Elements That You Can Use To Create A New Post On This Template.',
-      'des' : 'Heading example Here is example of hedings. You can use this heading by following …',
-      'date' : '69 Mar, 2020'
-    },
-    {
-      'id' : 3,
-      'image_url' : 'images/blog/post-2.jpg',
-      'title' : 'Elements That You Can Use To Create A New Post On This Template.',
-      'des' : 'Heading example Here is example of hedings. You can use this heading by following …',
-      'date' : '96 Mar, 2020'
-    },
-    {
-      'id' : 4,
-      'image_url' : 'images/blog/post-1.jpg',
-      'title' : 'Elements That You Can Use To Create A New Post On This Template.',
-      'des' : 'Heading example Here is example of hedings. You can use this heading by following …',
-      'date' : '4 Mar, 2020'
-    },
-    {
-      'id' : 5,
-      'image_url' : 'images/blog/post-5.jpg',
-      'title' : 'Elements That You Can Use To Create A New Post On This Template.',
-      'des' : 'Heading example Here is example of hedings. You can use this heading by following …',
-      'date' : '3 Mar, 2020'
-    }
-    ]
-  
-  
-  //const blogIds = getAllPostIds().slice(0, 6);
-  
-  return (
+const baseURL = "http://65.1.145.12:8080/api";
+const categories = [{name: 'Cybersecurity', nickname: 'hacking'}, {name: 'Cloud Computing', nickname: 'cloud'}, {name: 'Web dev', nickname: 'web'}, {name: 'App dev', nickname: 'app'}, {name: 'IoT', nickname: 'iot'}];
+
+export default function Home( {sample_blogs, latest} ) {
+    return (
     <Layout home>
       <Head>
         <title>Noobs Learning</title>
@@ -154,8 +111,8 @@ export default function Home() {
         <div className="me-lg-4">
           <div className="row gy-5">
           
-          {sample_blogs.map((id) => (
-          <Article blog={sample_blogs[id]} key={id}></Article>
+          {sample_blogs.slice(0, 9).map((blogData) => (
+          <Article blog={blogData} key={blogData.id}></Article>
           ))}
             
             <div className="col-12">
@@ -199,34 +156,18 @@ export default function Home() {
             <span>Category</span>
           </h5>
           <ul className="list-unstyled widget-list">
-            <li>
-              <a href="#!">
-                Four seasone <small className="ml-auto">(1)</small>
-              </a>
+            
+            {categories.map((category) => (
+            <li key={category.nickname}>
+              <Link href={`/blogs/categories/${category.nickname}`}>
+                {category.name} <small className="ml-auto"></small>
+              </Link>
             </li>
-            <li>
-              <a href="#!">
-                Newyork city <small className="ml-auto">(2)</small>
-              </a>
-            </li>
-            <li>
-              <a href="#!">
-                Photobooth <small className="ml-auto">(1)</small>
-              </a>
-            </li>
-            <li>
-              <a href="#!">
-                Photography <small className="ml-auto">(2)</small>
-              </a>
-            </li>
-            <li>
-              <a href="#!">
-                Videography <small className="ml-auto">(1)</small>
-              </a>
-            </li>
+            ))}
           </ul>
         </div>
         {/* tags */}
+        {/*
         <div className="widget widget-tags">
           <h4 className="widget-title">
             <span>Tags</span>
@@ -255,82 +196,38 @@ export default function Home() {
             </li>
           </ul>
         </div>
+        */}
         {/* latest post */}
         <div className="widget">
           <h5 className="widget-title">
-            <span>Latest Article</span>
+            <span>Latest Articles</span>
           </h5>
           {/* post-item */}
-          <ul className="list-unstyled widget-list">
+          {latest.latest_blogs.slice(0,3).map((blogData) => (
+          <ul className="list-unstyled widget-list" key = { blogData.id }>
             <li className="d-flex widget-post align-items-center">
-              <a className="text-black" href="/blog/elements/">
+              <Link className="text-black" href={`/blogs/${blogData.id}`}>
                 <div className="widget-post-image flex-shrink-0 me-3">
                   <img
                     className="rounded"
                     loading="lazy"
                     decoding="async"
-                    src="images/blog/post-4.jpg"
+                    src={blogData.image_url}
                     alt="Post Thumbnail"
                   />
                 </div>
-              </a>
+              </Link>
               <div className="flex-grow-1">
                 <h5 className="h6 mb-0">
-                  <a className="text-black" href="blog-details.html">
-                    Elements That You Can Use To Create A New Post On This
-                    Template.
-                  </a>
+                  <Link className="text-black" href={`/blogs/${blogData.id}`}>
+                    {blogData.title}
+                  </Link>
                 </h5>
-                <small>March 15, 2020</small>
+                <small>{blogData.date}</small>
               </div>
             </li>
           </ul>
-          <ul className="list-unstyled widget-list">
-            <li className="d-flex widget-post align-items-center">
-              <a className="text-black" href="/blog/post-1/">
-                <div className="widget-post-image flex-shrink-0 me-3">
-                  <img
-                    className="rounded"
-                    loading="lazy"
-                    decoding="async"
-                    src="images/blog/post-1.jpg"
-                    alt="Post Thumbnail"
-                  />
-                </div>
-              </a>
-              <div className="flex-grow-1">
-                <h5 className="h6 mb-0">
-                  <a className="text-black" href="blog-details.html">
-                    Cheerful Loving Couple Bakers Drinking Coffee
-                  </a>
-                </h5>
-                <small>March 14, 2020</small>
-              </div>
-            </li>
-          </ul>
-          <ul className="list-unstyled widget-list">
-            <li className="d-flex widget-post align-items-center">
-              <a className="text-black" href="/blog/post-2/">
-                <div className="widget-post-image flex-shrink-0 me-3">
-                  <img
-                    className="rounded"
-                    loading="lazy"
-                    decoding="async"
-                    src="images/blog/post-2.jpg"
-                    alt="Post Thumbnail"
-                  />
-                </div>
-              </a>
-              <div className="flex-grow-1">
-                <h5 className="h6 mb-0">
-                  <a className="text-black" href="blog-details.html">
-                    Cheerful Loving Couple Bakers Drinking Coffee
-                  </a>
-                </h5>
-                <small>March 14, 2020</small>
-              </div>
-            </li>
-          </ul>
+          ))}
         </div>
         {/* Social */}
         <div className="widget">
@@ -340,18 +237,18 @@ export default function Home() {
           <ul className="list-unstyled list-inline mb-0 social-icons">
             <li className="list-inline-item me-3">
               <a
-                title="Explorer Facebook Profile"
+                title="Join Whatsapp Community"
                 className="text-black"
-                href="https://facebook.com/"
+                href="https://chat.whatsapp.com/CFMPnYKORMMBNaRYm3042w"
               >
-                <i className="fab fa-facebook-f" />
+                <i className="fab fa-whatsapp" />
               </a>
             </li>
             <li className="list-inline-item me-3">
               <a
                 title="Explorer Twitter Profile"
                 className="text-black"
-                href="https://twitter.com/"
+                href="https://twitter.com/noobs_learning"
               >
                 <i className="fab fa-twitter" />
               </a>
@@ -360,7 +257,7 @@ export default function Home() {
               <a
                 title="Explorer Instagram Profile"
                 className="text-black"
-                href="https://instagram.com/"
+                href="https://instagram.com/noobs_learning"
               >
                 <i className="fab fa-instagram" />
               </a>
@@ -385,19 +282,19 @@ function Article( blog ){
                   <img
                     loading="lazy"
                     decoding="async"
-                    src={`${CDN}${blog.image_url}`}
+                    src={`${CDN}${blog.blog.image_url}`}
                     alt="Post Thumbnail"
                   />
                 </div>
                 <div className="pt-4">
-                  <p className="mb-3">{blog.date}</p>
+                  <p className="mb-3">{blog.blog.date}</p>
                   <h2 className="h4">
-                    <Link className="text-black" href={`/blogs/${blog.id}`}>
-                      {blog.title}
+                    <Link className="text-black" href={`/blogs/${blog.blog.id}`}>
+                      {blog.blog.title}
                     </Link>
                   </h2>
                   <p>
-                  {blog.des}
+                  {blog.blog.des}
                   </p>{" "}
                   <a
                     href="blog-details.html"
@@ -410,4 +307,57 @@ function Article( blog ){
               </article>
             </div>
     )
+}
+
+
+export async function getStaticProps() {
+  
+  const res = await fetch(`${baseURL}/api`);
+  const latest = await res.json();
+  
+   const sample_blogs = [
+    {
+      'id' : 1,
+      'image_url' : 'images/blog/post-4.jpg',
+      'title' : 'Elements That You Can Use To Create A New Post On This Template.',
+      'des' : 'Heading example Here is example of hedings. You can use this heading by following …',
+      'date' : '5 Mar, 2020'
+    },
+    {
+      'id' : 2,
+      'image_url' : 'images/blog/post-3.jpg',
+      'title' : 'Elements That You Can Use To Create A New Post On This Template.',
+      'des' : 'Heading example Here is example of hedings. You can use this heading by following …',
+      'date' : '69 Mar, 2020'
+    },
+    {
+      'id' : 3,
+      'image_url' : 'images/blog/post-2.jpg',
+      'title' : 'Elements That You Can Use To Create A New Post On This Template.',
+      'des' : 'Heading example Here is example of hedings. You can use this heading by following …',
+      'date' : '96 Mar, 2020'
+    },
+    {
+      'id' : 4,
+      'image_url' : 'images/blog/post-1.jpg',
+      'title' : 'Elements That You Can Use To Create A New Post On This Template.',
+      'des' : 'Heading example Here is example of hedings. You can use this heading by following …',
+      'date' : '4 Mar, 2020'
+    },
+    {
+      'id' : 5,
+      'image_url' : 'images/blog/post-5.jpg',
+      'title' : 'Elements That You Can Use To Create A New Post On This Template.',
+      'des' : 'Heading example Here is example of hedings. You can use this heading by following …',
+      'date' : '3 Mar, 2020'
+    }
+    ]
+ 
+  
+  return {
+    props: {
+      sample_blogs,
+      latest
+    },
+  };
 }

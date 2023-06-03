@@ -66,7 +66,7 @@ export default function Header() {
       <header className="navigation bg-tertiary">
   <nav className="navbar navbar-expand-xl navbar-light text-center py-3">
     <div className="container">
-      <a className="navbar-brand" href=".">
+      <Link className="navbar-brand" href={'/'}>
         <img
           loading="prelaod"
           decoding="async"
@@ -76,7 +76,7 @@ export default function Header() {
           height={100}
           alt="Noobs Learning"
         />
-      </a>
+      </Link>
       <button
         className="navbar-toggler"
         type="button"
@@ -93,32 +93,26 @@ export default function Header() {
         <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
           <li className="nav-item">
             {" "}
-            <a className="nav-link" href="index.html">
+            <Link className="nav-link" href={'/'}>
               Home
-            </a>
+            </Link>
           </li>
           <li className="nav-item ">
             {" "}
-            <a className="nav-link" href="about.html">
+            <Link className="nav-link" href={'/about'}>
               About
+            </Link>
+          </li>
+          <li className="nav-item ">
+            {" "}
+            <a className="nav-link" href="https://noobslearning.com/community">
+              Community
             </a>
           </li>
           <li className="nav-item ">
             {" "}
-            <a className="nav-link" href="blog.html">
-              Blogs
-            </a>
-          </li>
-          <li className="nav-item ">
-            {" "}
-            <a className="nav-link" href="faq.html">
-              FAQs
-            </a>
-          </li>
-          <li className="nav-item ">
-            {" "}
-            <a className="nav-link" href="services.html">
-              Our Products
+            <a className="nav-link" href="https://noobslearning.com/">
+              Courses
             </a>
           </li>
           <li className="nav-item ">
