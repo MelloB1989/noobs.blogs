@@ -13,21 +13,21 @@ export default function Blog({ blogData }){
       <div className="col-lg-10">
         <div className="mb-5">
           <h2 className="mb-4" style={{ lineHeight: "1.5" }}>
-            {blogData.title}
+            {blogData?.title}
           </h2>
           <span>
-            {blogData.date} <span className="mx-2">/</span>{" "}
+            {blogData?.date} <span className="mx-2">/</span>{" "}
           </span>
           <p className="list-inline-item">
             Category :{" "}
             <a href="#!" className="ml-1">
-              {blogData.category}{" "}
+              {blogData?.category}{" "}
             </a>
           </p>
           <p className="list-inline-item">
             Tags :{" "}
             <a href="#!" className="ml-1">
-              {blogData.tags}{" "}
+              {blogData?.tags}{" "}
             </a>{" "}
           </p>
         </div>
@@ -36,13 +36,13 @@ export default function Blog({ blogData }){
             <img
               loading="lazy"
               decoding="async"
-              src={blogData.image_url}
+              src={blogData?.image_url}
               alt="Post Thumbnail"
             />
           </div>
         </div>
         <div className="content">
-                  <div dangerouslySetInnerHTML={{ __html: blogData.contentHtml }} />
+                  <div dangerouslySetInnerHTML={{ __html: blogData?.contentHtml }} />
         </div>
       </div>
     </div>
@@ -59,13 +59,13 @@ export async function getStaticPaths() {
 const paths = getAllPostIds()
   return {
     paths,
-    fallback: false
+    fallback: true
   }
 }
 
 export async function getStaticProps({ params }) {
   const blogData = await getPostData(params.id)
-  console.log(blogData)
+  console.log(params.id)
   return {
     props: {
       blogData

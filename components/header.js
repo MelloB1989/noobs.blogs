@@ -29,6 +29,7 @@ export default function Header() {
     href="https://d99gnvg3g7wwg.cloudfront.net/noobs_main/images/favicon.jpeg"
     type="image/x-icon"
   />
+  
   {/* theme meta */}
   <meta name="theme-name" content="wallet" />
   {/* # Google Fonts */}

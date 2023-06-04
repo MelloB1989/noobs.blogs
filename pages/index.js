@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Layout from '../layout/default_layout'
 
 const CDN = "https://d99gnvg3g7wwg.cloudfront.net/noobs_main/";
-const baseURL = "http://65.1.145.12:8080/api";
+const baseURL = "http://localhost:8080/api";
 const categories = [{name: 'Cybersecurity', nickname: 'hacking'}, {name: 'Cloud Computing', nickname: 'cloud'}, {name: 'Web dev', nickname: 'web'}, {name: 'App dev', nickname: 'app'}, {name: 'IoT', nickname: 'iot'}];
 
 export default function Home( {sample_blogs, latest} ) {
@@ -203,7 +203,7 @@ export default function Home( {sample_blogs, latest} ) {
             <span>Latest Articles</span>
           </h5>
           {/* post-item */}
-          {latest.latest_blogs.slice(0,3).map((blogData) => (
+          {latest.latest_blogs.slice(0,5).map((blogData) => (
           <ul className="list-unstyled widget-list" key = { blogData.id }>
             <li className="d-flex widget-post align-items-center">
               <Link className="text-black" href={`/blogs/${blogData.id}`}>
