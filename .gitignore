@@ -4,6 +4,8 @@
 /node_modules
 /.pnp
 .pnp.js
+nohup.out
+pid.txt
 
 # testing
 /coverage
