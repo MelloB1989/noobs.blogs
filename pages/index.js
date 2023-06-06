@@ -10,7 +10,7 @@ export default function Home( {sample_blogs, latest} ) {
     return (
     <Layout home>
       <Head>
-        <title>Noobs Learning</title>
+        <title>Noobs Learning | Blogs</title>
       </Head>
       
       <section className="page-header bg-tertiary">
@@ -282,7 +282,7 @@ function Article( blog ){
                   <img
                     loading="lazy"
                     decoding="async"
-                    src={`${CDN}${blog.blog.image_url}`}
+                    src={`${blog.blog.image_url}`}
                     alt="Post Thumbnail"
                   />
                 </div>
@@ -317,39 +317,39 @@ export async function getStaticProps() {
   
    const sample_blogs = [
     {
-      'id' : 1,
-      'image_url' : 'images/blog/post-4.jpg',
-      'title' : 'Elements That You Can Use To Create A New Post On This Template.',
-      'des' : 'Heading example Here is example of hedings. You can use this heading by following …',
-      'date' : '5 Mar, 2020'
+      'id' : 'cdn-and-load-balancing',
+      'image_url' : 'https://media.geeksforgeeks.org/wp-content/cdn-uploads/20201030211002/Load-Balancer-System-Design.png',
+      'title' : 'Supercharging Your Website with CDN and Load Balancing',
+      'des' : 'In todays fast-paced digital world, website performance is crucial for success. Slow-loading websites …',
+      'date' : '2023-06-05'
     },
     {
-      'id' : 2,
-      'image_url' : 'images/blog/post-3.jpg',
-      'title' : 'Elements That You Can Use To Create A New Post On This Template.',
-      'des' : 'Heading example Here is example of hedings. You can use this heading by following …',
-      'date' : '69 Mar, 2020'
+      'id' : 'git-guide',
+      'image_url' : 'https://kinsta.com/wp-content/uploads/2018/04/what-is-github-1-1.png',
+      'title' : 'Git and GitHub: A Beginner Guide',
+      'des' : 'Git is a distributed version control system that allows developers to track changes in their codebase. …',
+      'date' : '2023-06-04'
     },
     {
-      'id' : 3,
-      'image_url' : 'images/blog/post-2.jpg',
-      'title' : 'Elements That You Can Use To Create A New Post On This Template.',
-      'des' : 'Heading example Here is example of hedings. You can use this heading by following …',
-      'date' : '96 Mar, 2020'
+      'id' : 'ethical-hacking-basics',
+      'image_url' : 'https://www.simplilearn.com/ice9/free_resources_article_thumb/ethical-hackers-for-businesses-article.jpg',
+      'title' : 'The Basics of Ethical Hacking: Unveiling Roadmaps, Opportunities, and Challenges',
+      'des' : 'Ethical hacking, also known as penetration testing or white-hat hacking, is the practice of intentionally exploiting vulnerabilities in computer …',
+      'date' : '2023-06-05'
     },
     {
-      'id' : 4,
-      'image_url' : 'images/blog/post-1.jpg',
-      'title' : 'Elements That You Can Use To Create A New Post On This Template.',
-      'des' : 'Heading example Here is example of hedings. You can use this heading by following …',
-      'date' : '4 Mar, 2020'
+      'id' : 'html-css-js-basics',
+      'image_url' : 'https://rochester.kidsoutandabout.com/sites/default/files/html_css_javascript.jpeg',
+      'title' : 'Unleashing the Web: An Introduction to HTML, CSS, and JavaScript',
+      'des' : 'In the vast realm of web development, three powerful technologies form the foundation of every modern website …',
+      'date' : '2023-06-05'
     },
     {
-      'id' : 5,
-      'image_url' : 'images/blog/post-5.jpg',
-      'title' : 'Elements That You Can Use To Create A New Post On This Template.',
-      'des' : 'Heading example Here is example of hedings. You can use this heading by following …',
-      'date' : '3 Mar, 2020'
+      'id' : 'python-flask-basics',
+      'image_url' : 'https://static.javatpoint.com/tutorial/flask/images/flask-tutorial.png',
+      'title' : 'Flask: Unleashing the Power of Python Web Development',
+      'des' : 'Python is a versatile and powerful programming language, and when combined with a web framework …',
+      'date' : '2023-06-05'
     }
     ]
  

@@ -7,6 +7,9 @@ export default function Blog({ blogData }){
     return(
         <>
         <Layout>
+        <Head>
+        <title>{blogData?.title} | Noobs Learning</title>
+      </Head>
         <div className="section">
   <div className="container">
     <div className="row justify-content-center">
