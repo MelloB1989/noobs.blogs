@@ -51,7 +51,6 @@ export default function Blog({ blogData }){
     </div>
   </div>
 </div>
-
         </Layout>
         </>
         )
