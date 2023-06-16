@@ -6,6 +6,12 @@ tags: 'tutorial'
 image_url: 'https://integrisit.com/wp-content/uploads/2022/12/social_engineering-01.png'
 ---
 
+---
+
+*Note: The information provided in this blog is for educational purposes only. Engaging in hacking activities without proper authorization is illegal and unethical.*
+
+---
+
 Social Engineering: Step-by-Step Guide Part 2
  ======================================
 In the previous blog we hosted the phishing website on localhost, in this blog we will be seeing how this website can be shared to the victim using port forwarding ⚡💎
@@ -17,7 +23,7 @@ In the previous blog we hosted the phishing website on localhost, in this blog w
   
  ##### Copy and paste these commands in your terminal. 
   
- -  `wget https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.tgz` /
+ -  `wget https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.tgz` \
 `wget` is a command in linux which allows you download a file from the internet.
 
  -  `sudo tar -xvf ngrok-v3-stable-linux-amd64.tgz` \

@@ -6,6 +6,12 @@ tags: 'tutorial'
 image_url: 'https://integrisit.com/wp-content/uploads/2022/12/social_engineering-01.png'
 ---
 
+---
+
+*Note: The information provided in this blog is for educational purposes only. Engaging in hacking activities without proper authorization is illegal and unethical.*
+
+---
+
 Social Engineering: Step-by-Step Guide
 ======================================
 
