@@ -1,5 +1,5 @@
 ---
-title: 'Social Engineering Tutorial ⚡'
+title: 'Social Engineering Tutorial | Part 2⚡'
 date: '2023-06-07'
 category: 'Guide'
 tags: 'tutorial'
